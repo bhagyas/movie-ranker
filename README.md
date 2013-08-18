@@ -33,6 +33,7 @@ Usage
 Download and copy `rank.py` into the directory where all the folders containing movies is located.
 
 **Ranking**
+
 Once you have the `rank.py` inside the folder, goto shell/terminal and then navigate to the same.
 
 Type the command `python rank.py` and press return.
