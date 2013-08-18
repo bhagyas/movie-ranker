@@ -4,9 +4,20 @@ import urllib2
 import re
 import sys
 
-folders =  [name for name in os.listdir(".") if os.path.isdir(name)]
-zero_fill_length = len(str(len(folders))) + 1
 base_dir = "." #defaults to current folder
+folders =  [name for name in os.listdir(base_dir) if os.path.isdir(name)]
+zero_fill_length = len(str(len(folders))) + 1
+
+#
+# Disclaimer: 
+#
+# Whatever you do with this is your responsibility.
+# By using this script you agree to use this only for good. 
+# You shall not held the authors liable for any damages caused.
+# Don't download movies illegally. It's bad.
+# If you want to improve this, please fork the project, fix it and do a pull request.
+
+# https://github.com/bhagyas/movie-ranker
 
 def rank():
 	request_url= "http://mymovieapi.com/?title={0}&type=json&plot=simple&episode=1&limit=1&yg=0&mt=none&lang=en-US&offset=&aka=simple&release=simple&business=0&tech=0"
