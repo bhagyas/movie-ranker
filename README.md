@@ -91,7 +91,7 @@ By using this script you agree to use this only for good.
 You shall not held the authors liable for any damages caused.
 Don't download movies illegally. It's bad.
 
-If you want to improve this, please fork the project, fix it and do a pull request.
+If you want to improve this or report any issues, please fork the project, fix it and do a pull request.
 
 Authors
 ---
