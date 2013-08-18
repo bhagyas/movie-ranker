@@ -14,17 +14,17 @@ However, movies are often ranked at IMDB and other sites such as Rotten Tomatoes
 
 For an example, you have the following movie folders inside your Movies folder.
 
-Titanic (1997)
-The Matrix (1999)
-The Lord of the Rings: The Fellowship of the Ring (2001)
+* Titanic (1997)
+* The Matrix (1999)
+* The Lord of the Rings: The Fellowship of the Ring (2001)
 
 Assuming you haven't watched any of these earlier (which is highly unlikely) the only way to decide the order of watching these is by individually looking up the ratings online.
 
 Once you use the movie-ranker on the folder, your folders would look like this (after you sort folders by name).
 
-012_The Lord of the Rings: The Fellowship of the Ring (2001)
-013_The Matrix (1999)
-024_Titanic (1997)
+* 012_The Lord of the Rings: The Fellowship of the Ring (2001)
+* 013_The Matrix (1999)
+* 024_Titanic (1997)
 
 The lower the number, the better the movie (according to ratings). So you can immediately start watching from the first one instead of looking up ratings for each one.
 
@@ -57,6 +57,7 @@ IMDB rating : 7.6
 It will look at the ranking provided by IMDB, multiplies it by 10 to remove the decimals and then substracts it from 10. Then it will add a zero padding (eg: 007 for 7) to make sure the folders are sorted in the folder explorers.
 
 10 - 7.6 = 2.4
+
 2.4 * 10 = 24
 
 Assuming there are 100 movie folders in the current folder, it will add a zero padding (and an underscore at the end).
@@ -69,8 +70,8 @@ Since Titanic is a better movie than another movie (according to IMDB rankings) 
 
 Finally your movies folder containing Titanic (1997) and Matrix (1999) would look like this when you sort folder by name in your folder explorer.
 
-013_Matrix (1999)
-024_Titanic (1997)
+* 013_Matrix (1999)
+* 024_Titanic (1997)
 
 So you can start immediately watching Matrix (1999) without having to toss a coin to decide which to watch. (Sorry, Titanic).
 
