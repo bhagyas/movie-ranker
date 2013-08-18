@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>movie-ranker by bhagyas</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/bhagyas/movie-ranker">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>movie-ranker</h1>
+            <h2>Sorts movie folders by renaming them with a zero padded inverse IMDB rating. Makes it easier to decide what to watch when you have tens / hundreds / thousands of movies in a collection.</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/bhagyas/movie-ranker/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/bhagyas/movie-ranker/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a name="movie-ranker" class="anchor" href="#movie-ranker"><span class="octicon octicon-link"></span></a>movie-ranker</h1>
+
+<h2>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>Sorts movie folders by renaming them with a zero padded inverse IMDB rating. Makes it easier to decide what to watch when you have tens / hundreds / thousands of movies in a collection.</p>
+
+<h2>
+<a name="why-should-i-use-this" class="anchor" href="#why-should-i-use-this"><span class="octicon octicon-link"></span></a>Why should I use this?</h2>
+
+<p>If you have a collection full of movies, it can be pretty hard to decide which movie to watch. Specially since the movie name is all that helps to decide which to watch.</p>
+
+<p>However, movies are often ranked at IMDB and other sites such as Rotten Tomatoes based on viewer rankings and critic rankings. These can be helpful when you want to make a decision if a movie is worth watching.</p>
+
+<p>For an example, you have the following movie folders inside your Movies folder.</p>
+
+<ul>
+<li>Titanic (1997)</li>
+<li>The Matrix (1999)</li>
+<li>The Lord of the Rings: The Fellowship of the Ring (2001)</li>
+</ul><p>Assuming you haven't watched any of these earlier (which is highly unlikely) the only way to decide the order of watching these is by individually looking up the ratings online.</p>
+
+<p>Once you use the movie-ranker on the folder, your folders would look like this (after you sort folders by name).</p>
+
+<ul>
+<li>012_The Lord of the Rings: The Fellowship of the Ring (2001)</li>
+<li>013_The Matrix (1999)</li>
+<li>024_Titanic (1997)</li>
+</ul><p>The lower the number, the better the movie (according to ratings). So you can immediately start watching from the first one instead of looking up ratings for each one.</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Download and copy <code>rank.py</code> into the directory where all the folders containing movies is located.</p>
+
+<p><strong>Ranking</strong></p>
+
+<p>Once you have the <code>rank.py</code> inside the folder, goto shell/terminal and then navigate to the same.</p>
+
+<p>Type the command <code>python rank.py</code> and press return.</p>
+
+<p><strong>Clearing the Ranking</strong></p>
+
+<p>As earlier, make sure the file <code>rank.py</code> is in the folder where the renamed folders are contained.</p>
+
+<p>Navigate to the folder using the terminal and then type and execute the command <code>python rank.py --clear</code></p>
+
+<h2>
+<a name="how-does-this-work" class="anchor" href="#how-does-this-work"><span class="octicon octicon-link"></span></a>How does this work?</h2>
+
+<p><strong>Ranking</strong></p>
+
+<p>When you ask to rank the folders inside a file, the script makes a request to IMDB ratings API through <a href="http://mymovieapi.com/">http://mymovieapi.com/</a> with the folder name (assuming it's the name of a movie). </p>
+
+<p><em>eg: Titanic (1997)</em>
+IMDB rating : 7.6</p>
+
+<p>It will look at the ranking provided by IMDB, multiplies it by 10 to remove the decimals and then substracts it from 10. Then it will add a zero padding (eg: 007 for 7) to make sure the folders are sorted in the folder explorers.</p>
+
+<p>10 - 7.6 = 2.4</p>
+
+<p>2.4 * 10 = 24</p>
+
+<p>Assuming there are 100 movie folders in the current folder, it will add a zero padding (and an underscore at the end).</p>
+
+<p>24 becomes 024</p>
+
+<p>The movies folder Titanic (1997) gets renamed to 024_Titanic (1997)</p>
+
+<p>Since Titanic is a better movie than another movie (according to IMDB rankings) that has a lesser rank, you can choose which movie to watch just by looking at the folder name! Isn't that cool?</p>
+
+<p>Finally your movies folder containing Titanic (1997) and Matrix (1999) would look like this when you sort folder by name in your folder explorer.</p>
+
+<ul>
+<li>013_Matrix (1999)</li>
+<li>024_Titanic (1997)</li>
+</ul><p>So you can start immediately watching Matrix (1999) without having to toss a coin to decide which to watch. (Sorry, Titanic).</p>
+
+<p><strong>Clearing the Ranking</strong></p>
+
+<p>Ranking can get pretty addictive, and once you have ranked all your folders, sometimes you might need to revert back to the original folder names.</p>
+
+<p>When you clear the ranks, it will change the folder names back to the original as they were. Pretty neatly.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>MIT License</p>
+
+<h2>
+<a name="disclaimer" class="anchor" href="#disclaimer"><span class="octicon octicon-link"></span></a>Disclaimer</h2>
+
+<p>Whatever you do with this is your responsibility.
+By using this script you agree to use this only for good. 
+You shall not held the authors liable for any damages caused.
+Don't download movies illegally. It's bad.</p>
+
+<p>If you want to improve this or report any issues, please fork the project, fix it and do a pull request.</p>
+
+<h2>
+<a name="authors" class="anchor" href="#authors"><span class="octicon octicon-link"></span></a>Authors</h2>
+
+<p>Bhagya Nirmaan Silva (<a href="http://www.about.me/bhagyas">www.about.me/bhagyas</a>)</p>
+
+<p>With love.
+&lt;3</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/bhagyas">bhagyas</a> can be found on <a href="https://github.com/bhagyas/movie-ranker">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
